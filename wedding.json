@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "lang": "en",
+    "siteUrl": "",
+    "title": "Prakash Weds Keerthi — Wedding Invitation",
+    "description": "Wedding invitation for Prakash and Keerthi on Thursday, 3 December 2026 at 9:03 PM. Venue details are pending verification.",
+    "keywords": "Prakash, Keerthi, Telugu wedding invitation, 3 December 2026",
+    "author": "Sanaboyina family",
+    "themeColor": "#4A121C",
+    "og": {
+      "type": "website",
+      "title": "Prakash Weds Keerthi",
+      "description": "Join the Sanaboyina family for Prakash and Keerthi's wedding on 3 December 2026.",
+      "image": "images/photo1.jpg",
+      "imageAlt": "",
+      "siteName": "Prakash Weds Keerthi",
+      "locale": "en_IN"
+    },
+    "twitter": {
+      "card": "summary",
+      "title": "Prakash Weds Keerthi",
+      "description": "Wedding invitation for 3 December 2026.",
+      "image": "images/photo1.jpg",
+      "imageAlt": ""
+    }
+  },
+  "couple": {
+    "partner1": "Prakash",
+    "partner2": "Keerthi",
+    "connector": "Weds",
+    "partner1Telugu": "ప్రకాష్",
+    "partner2Telugu": "కీర్తి",
+    "brideHonorificTelugu": "చి॥ ల॥ సౌ॥ కీర్తి"
+  },
+  "families": {
+    "eyebrow": "With the blessings of our families",
+    "title": "Family",
+    "groomParents": "Late Sanaboyina Arjunudu & Smt. Kanaka Seeta",
+    "brideParents": "Sri Gudoori [surname spelling to verify] Nagaraju & Smt. Kusuma",
+    "brideFamilyAddress": "Jangareddygudem, Eluru district",
+    "blessingsNote": "Grandparents’ names are to be confirmed from the printed invitation.",
+    "invitingFamily": "Sanaboyina family",
+    "invitingFamilyTelugu": "సానబోయిన వారి పెండ్లిపిలుపు"
+  },
+  "page": {
+    "backgroundImage": "images/background.jpg"
+  },
+  "hero": {
+    "eyebrow": "సానబోయిన వారి పెండ్లిపిలుపు · SANABOYINA FAMILY",
+    "subtitle": "request the honour of your presence at the wedding of",
+    "displayDate": "Thursday, 3 December 2026 · 9:03 PM",
+    "weddingDateISO": "2026-12-03T21:03:00+05:30",
+    "scrollCue": "Scroll for the celebration ↓",
+    "scrollCueAfterWedding": "The celebration has begun! ↓",
+    "calendarDetails": "Printed card reading to verify: Parabhava year · Karthika bahula · Kanya lagnam · Uttara nakshatram."
+  },
+  "gallery": {
+    "eyebrow": "Our Moments",
+    "title": "Wedding Gallery",
+    "subtitle": "Celebrating Prakash and Keerthi.",
+    "photos": [
+      {
+        "url": "images/photo1.jpg",
+        "caption": "Prakash and Keerthi"
+      },
+      {
+        "url": "images/photo2.jpg",
+        "caption": "Prakash and Keerthi"
+      }
+    ]
+  },
+  "video": {
+    "heading": "",
+    "url": "",
+    "youtubeId": "",
+    "ariaLabel": "",
+    "thumbnailAlt": ""
+  },
+  "venueSection": {
+    "eyebrow": "Wedding details",
+    "title": "Venue & schedule",
+    "directionsLabel": "📍 Get Directions"
+  },
+  "events": {
+    "ceremony": {
+      "icon": "💍",
+      "title": "Wedding Muhurtham",
+      "displayDate": "Thursday, 3 December 2026 · 9:03 PM",
+      "mapTitle": "Wedding venue map",
+      "venue": {
+        "name": "Tulasi Convention Hall (name to verify)",
+        "address": "Town appears to read Peravali or Peravaram (verify); full address pending",
+        "lat": 16.5539187,
+        "lng": 81.6292195,
+        "zoom": 15
+      }
+    },
+    "reception": {
+      "icon": "🍽️",
+      "title": "Dinner (schedule to verify)",
+      "displayDate": "3 December 2026 · 7:00 PM (to verify)",
+      "mapTitle": "Dinner venue map",
+      "venue": {
+        "name": "Same venue as wedding (to verify)",
+        "address": "Town and full address to be confirmed from the printed card",
+        "lat": 16.5539187,
+        "lng": 81.6292195,
+        "zoom": 15
+      }
+    }
+  },
+  "sender": {
+    "address": "Juthiga, Penumantra mandalam, West Godavari district",
+    "phones": ["8985008045", "7382789030"]
+  },
+  "footer": {
+    "script": "With love,"
+  }
+}
