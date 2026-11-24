@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="images/photo1.jpg">
 <!-- META:END -->
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Oriya MN:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap');
 
   /* ============ TOKENS — WARM GOLD & MAROON CLASSIC ============ */
   :root{
@@ -45,7 +45,7 @@
     margin:0;
     background:transparent;
     color:var(--ink);
-    font-family:'Poppins',sans-serif;
+    font-family:'Oriya MN',sans-serif;
     font-weight:300;
     overflow-x:hidden;
   }
@@ -65,7 +65,7 @@
   }
 
   .eyebrow{
-    font-family:'Poppins',sans-serif;
+    font-family:'Oriya MN',sans-serif;
     letter-spacing:.28em;
     text-transform:uppercase;
     font-size:.7rem;
@@ -100,7 +100,7 @@
     text-align:center;
     background:rgba(245,230,211,.12);
     overflow:hidden;
-    padding:clamp(24px,5vh,52px) 20px 44px;
+    padding:clamp(80px,8vh,100px) 20px 44px;
   }
   .hero-wheel{
     position:relative;
@@ -116,52 +116,54 @@
     position:absolute;
     inset:0;
     background:url('images/bg-png.png') center / contain no-repeat;
-    opacity:.68;
-    animation:hero-wheel-spin 80s linear infinite;
+    opacity:0;
     pointer-events:none;
     z-index:-1;
   }
+  .hero-wheel.is-visible::before{animation:hero-wheel-spin 80s linear infinite,wheel-in 1.5s ease forwards}
   @keyframes hero-wheel-spin{
     from{transform:rotate(0deg)}
     to{transform:rotate(360deg)}
   }
-  .hero-eyebrow-arc{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}
+  @keyframes wheel-in{to{opacity:.68}}
+  .hero-eyebrow-arc{position:absolute;inset:-9%;width:auto;height:auto;overflow:visible;pointer-events:none;z-index:2}
   .hero-eyebrow-arc text{
-    fill:var(--maroon-deep);font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.8px;
+    fill:var(--maroon-deep);font-family:'Oriya MN',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.8px;
     paint-order:stroke;stroke:rgba(255,250,245,.8);stroke-width:2px;stroke-linejoin:round
   }
+  #hero-eyebrow-clip rect{width:0;transition:width 1.5s ease}
+  .hero-wheel.is-typing #hero-eyebrow-clip rect{width:400px}
   .hero-inner{position:relative;z-index:1;width:100%}
   .hero-names{
     position:relative;z-index:1;width:100%;margin:0;padding:0 12%;
     font-size:clamp(2.3rem,8vw,5rem);font-weight:700;line-height:.92;
     opacity:0;
-    animation:title-in .9s ease .25s forwards;
+    transform:translateY(12px);
+    transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1);
   }
+  .hero-names.is-visible{opacity:1;transform:translateY(0)}
   .hero-names > span:not(.amp){display:block}
   .hero-names .amp{
     display:block;font-family:'Mrs Saint Delafield',cursive;color:#5c0909;
     font-size:.48em;line-height:.85;margin:4px 0;vertical-align:baseline
   }
-  @keyframes title-in{to{opacity:1}}
   .hero-details{position:relative;z-index:1;width:min(100%,760px);margin:24px auto 0}
   .hero-sub{
     font-size:1.05rem;
     color:var(--ink-soft);
     max-width:420px;
     margin:0 auto;
-    opacity:0;
-    animation: rise .9s ease .8s forwards;
+    opacity:0;transform:translateY(12px);transition:opacity 1.5s ease,transform 1.5s ease;
   }
   .hero-date{
     margin:0 auto;
-    font-family:'Cormorant Garamond', serif;
-    font-size:1.4rem;
+    font-family:'Oriya MN', serif;
+    font-size:50px;
     letter-spacing:.04em;
     color:var(--maroon);
-    opacity:0;
-    animation: rise .9s ease 1s forwards;
+    opacity:0;transform:translateY(12px);transition:opacity 1.5s ease,transform 1.5s ease;
   }
-  @keyframes rise{ from{ opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+  .hero-details.is-visible .hero-sub,.hero-details.is-visible .hero-date{opacity:1;transform:translateY(0)}
 
   .countdown{
     display:flex;
@@ -169,9 +171,11 @@
     justify-content:center;
     margin-top:34px;
     flex-wrap:wrap;
-    opacity:0;
-    animation: rise .9s ease 1.2s forwards;
+    opacity:1;
+    animation:none;
   }
+  .countdown .cd-box{opacity:0;transform:translateY(12px);transition:opacity 1.5s ease var(--item-delay,0ms),transform 1.5s ease var(--item-delay,0ms)}
+  .hero-details.is-visible .countdown .cd-box{opacity:1;transform:translateY(0)}
   .cd-box{
     background:rgba(253,250,245,.88);
     border:1px solid rgba(211,175,55,.3);
@@ -181,7 +185,7 @@
     padding:14px 10px;
   }
   .cd-box .num{
-    font-family:'Cormorant Garamond', serif;
+    font-family:'oriya mn', serif;
     font-size:2.1rem;
     font-weight:600;
     color:var(--maroon-deep);
@@ -201,10 +205,10 @@
     letter-spacing:.2em;
     text-transform:uppercase;
     color:var(--gold);
-    opacity:0;
-    animation: rise .9s ease 1.4s forwards, bob 2.4s ease-in-out 2.4s infinite;
+    opacity:0;transform:translateY(12px);transition:opacity 1.5s ease 1.7s,transform 1.5s ease 1.7s;
   }
-  @keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);} }
+  .hero-details.is-visible .scroll-cue{opacity:1;transform:translateY(0);animation:bob 2.4s ease-in-out 3.2s infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 
 
 
@@ -299,7 +303,7 @@
     font-weight:700;
     text-shadow:none !important;
     box-shadow:0 10px 25px rgba(0,0,0,.22);
-    font-size:clamp(1.15rem,3.2vw,1.75rem);
+    font-size:clamp(2.1rem,3.4vw,2.5rem);
     line-height:1.3;
   }
 
@@ -605,6 +609,13 @@
   .lightbox-nav.prev{ left:10px; top:50%; transform:translateY(-50%); }
   .lightbox-nav.next{ right:10px; top:50%; transform:translateY(-50%); }
 
+  .scroll-reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 1.5s ease var(--reveal-delay,0ms),transform 1.5s cubic-bezier(.2,.7,.2,1) var(--reveal-delay,0ms);
+  }
+  .scroll-reveal.is-visible{opacity:1;transform:translateY(0)}
+
   /* ============ FOOTER ============ */
   footer{
     text-align:center;
@@ -748,7 +759,7 @@
       max-width:100%;
       margin:0 auto;
       padding:12px clamp(10px,3vw,18px);
-      font-size:clamp(1.1rem,5vw,1.4rem);
+      font-size:clamp(1.65rem,5.2vw,2.1rem);
       line-height:1.28;
       letter-spacing:0;
       overflow-wrap:anywhere;
@@ -776,7 +787,7 @@
   @media (max-width:360px){
     .hero{padding-inline:12px}
     .hero-names{font-size:2.15rem}
-    .hero-date{font-size:1.08rem !important}
+    .hero-date{font-size:1.65rem !important}
     .gallery-wrap{padding-inline:12px}
   }
 
@@ -795,8 +806,11 @@
   <div class="hero-inner">
     <div class="hero-wheel">
       <svg class="hero-eyebrow-arc" id="hero-eyebrow-arc" viewBox="0 0 400 400" role="img" aria-label="">
-        <defs><path id="hero-eyebrow-path" d="M 4 200 A 196 196 0 0 1 396 200"/></defs>
-        <text text-anchor="middle"><textPath id="hero-eyebrow" href="#hero-eyebrow-path" startOffset="50%"></textPath></text>
+        <defs>
+          <path id="hero-eyebrow-path" d="M 20 200 A 180 180 0 0 1 380 200"/>
+          <clipPath id="hero-eyebrow-clip" clipPathUnits="userSpaceOnUse"><rect x="0" y="0" width="0" height="400"/></clipPath>
+        </defs>
+        <text text-anchor="middle" clip-path="url(#hero-eyebrow-clip)"><textPath id="hero-eyebrow" href="#hero-eyebrow-path" startOffset="50%"></textPath></text>
       </svg>
       <h1 class="hero-names"><span id="hero-p1"></span><span class="amp"></span><span id="hero-p2"></span></h1>
     </div>
@@ -905,7 +919,7 @@
     .catch(function(err){
       console.error('Could not load wedding.json:', err);
       const note = document.createElement('div');
-      note.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:200;padding:10px 16px;background:#4A121C;color:#fff;font:14px Poppins,sans-serif;text-align:center';
+      note.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:200;padding:10px 16px;background:#4A121C;color:#fff;font:18px Oriya MN,sans-serif;text-align:center';
       note.textContent = 'Could not load wedding.json — serve this folder over http(s) (e.g. GitHub Pages or "python3 -m http.server"); fetch() is blocked on file://.';
       document.body.appendChild(note);
     });
@@ -956,7 +970,6 @@
   applyMeta(CONFIG.meta);
   if(CONFIG.page.backgroundImage) document.documentElement.style.setProperty('--bg-image', 'url("' + CONFIG.page.backgroundImage + '")');
 
-  setText('hero-eyebrow', hero.eyebrow);
   document.getElementById('hero-eyebrow-arc').setAttribute('aria-label', hero.eyebrow);
   setText('hero-p1', couple.partner1);
   setText('hero-p2', couple.partner2);
@@ -992,6 +1005,47 @@
 
   setText('footer-script', CONFIG.footer.script);
   setText('footer-monogram', fullNames);
+
+  /* Reveal the hero in order: photo, wheel, curved type, names, then details. */
+  (function animateHeroInOrder(){
+    const wheel = document.querySelector('.hero-wheel');
+    const eyebrow = document.getElementById('hero-eyebrow');
+    const names = document.querySelector('.hero-names');
+    const details = document.querySelector('.hero-details');
+    const phrase = hero.eyebrow || '';
+    let started = false;
+    const overlapDelay = 750; // start the next reveal halfway through a 1.5-second transition
+    let namesStarted = false;
+    function revealNames(){
+      if(namesStarted) return;
+      namesStarted = true;
+      names.classList.add('is-visible');
+      details.classList.add('is-visible');
+    }
+    eyebrow.textContent = phrase;
+    function revealWheel(){
+      if(started) return;
+      started = true;
+      wheel.classList.add('is-visible');
+      if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+        wheel.classList.add('is-typing');
+        names.classList.add('is-visible');
+        details.classList.add('is-visible');
+      }else{
+        setTimeout(() => {
+          wheel.classList.add('is-typing');
+          setTimeout(revealNames,overlapDelay);
+        },overlapDelay);
+      }
+    }
+    if(CONFIG.page.backgroundImage){
+      const background = new Image();
+      background.onload = revealWheel;
+      background.onerror = revealWheel;
+      background.src = CONFIG.page.backgroundImage;
+      if(background.complete) revealWheel();
+    }else revealWheel();
+  })();
 
   /* ---------- countdown ---------- */
   const target = new Date(hero.weddingDateISO).getTime();
@@ -1082,6 +1136,25 @@
     document.getElementById('reception-name').textContent = r.name;
     document.getElementById('reception-address').textContent = r.address;
     document.getElementById('reception-directions-btn').href = `https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}`;
+  })();
+
+  /* Stagger content as each section enters view. */
+  (function setupEntranceAnimations(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    const items = document.querySelectorAll('.gallery-wrap .section-head, .gallery-grid figure, .teaser-wrap, #venue > .section-head, #venue > div, footer > *');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, {threshold:.12,rootMargin:'0px 0px -3% 0px'});
+    items.forEach((item,index) => {
+      item.classList.add('scroll-reveal');
+      item.style.setProperty('--reveal-delay', Math.min(index % 6,5) * 100 + 'ms');
+      observer.observe(item);
+    });
+    document.querySelectorAll('.countdown .cd-box').forEach((item,index) => item.style.setProperty('--item-delay',index * 120 + 'ms'));
   })();
 
   } /* end init */
