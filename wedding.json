@@ -11,7 +11,7 @@
       "type": "website",
       "title": "Prakash Weds Keerthi",
       "description": "Join the Sanaboina family for Prakash and Keerthi's wedding on 3 December 2026.",
-      "image": "images/_P1A1410%20(1).jpg",
+      "image": "images/photo1.jpg",
       "imageAlt": "",
       "siteName": "Prakash Weds Keerthi",
       "locale": "en_IN"
@@ -20,7 +20,7 @@
       "card": "summary",
       "title": "Prakash Weds Keerthi",
       "description": "Wedding invitation for 3 December 2026.",
-      "image": "images/_P1A1410%20(1).jpg",
+      "image": "images/photo1.jpg",
       "imageAlt": ""
     }
   },
@@ -60,7 +60,7 @@
     "subtitle": "Celebrating Prakash and Keerthi.",
     "photos": [
       {
-        "url": "images/_P1A1410%20(1).jpg",
+        "url": "images/photo1.jpg",
         "caption": "Prakash and Keerthi"
       },
       {
