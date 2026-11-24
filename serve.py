@@ -6,7 +6,7 @@ import os
 
 
 HOST = os.environ.get("HOST", "127.0.0.1")
-PORT = int(os.environ.get("PORT", "8000"))
+PORT = int(os.environ.get("PORT", "8001"))
 
 
 if __name__ == "__main__":
