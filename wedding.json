@@ -46,7 +46,7 @@
     "backgroundImage": "images/background.jpg"
   },
   "hero": {
-    "eyebrow": "సానబోయిన వారి పెండ్లిపిలుపు · SANABOYINA FAMILY",
+    "eyebrow": "SANABOYINA'S WEDDING INVITATION",
     "subtitle": "request the honour of your presence at the wedding of",
     "displayDate": "Thursday, 3 December 2026 · 9:03 PM",
     "weddingDateISO": "2026-12-03T21:03:00+05:30",
@@ -95,7 +95,8 @@
         "zoom": 15
       }
     },
-    "reception": {
+    "reception1": {
+      "enabled": false,
       "icon": "🍽️",
       "title": "Dinner (schedule to verify)",
       "displayDate": "3 December 2026 · 7:00 PM (to verify)",

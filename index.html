@@ -137,6 +137,24 @@
   @keyframes bloom{ to{ stroke-dashoffset:0; } }
 
   .hero-inner{ position:relative; z-index:2; }
+  .hero-eyebrow-arc{
+    position:absolute;
+    z-index:3;
+    top:50%;
+    left:50%;
+    width:min(720px, 130vw);
+    height:min(720px, 130vw);
+    transform:translate(-50%,-50%);
+    overflow:visible;
+    pointer-events:none;
+  }
+  .hero-eyebrow-arc text{
+    fill:var(--maroon-deep);
+    font-family:'Poppins',sans-serif;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:1.8px;
+  }
   .hero-inner .eyebrow{ opacity:0; animation: rise .9s ease .3s forwards; }
   .hero-names{
     font-size:clamp(3rem, 9vw, 6.4rem);
@@ -255,7 +273,7 @@
     width:100%;
     white-space:nowrap;
     text-align:center;
-    font-size:clamp(.72rem, 1.5vw, .95rem);
+    font-size:clamp(.92rem, 2.5vw, 1.95rem);
     letter-spacing:.12em;
   }
 
@@ -271,7 +289,7 @@
   .hero,
   .prewedding-section,
   footer{
-    color:#232323;
+    color:#f7f1f1;
   }
 
   .hero .eyebrow,
@@ -292,7 +310,7 @@
   }
 
   .hero .amp{
-    color:#4A4A4A;
+    color:#560505;
     font-weight:700;
     text-shadow:none;
   }
@@ -370,7 +388,7 @@
   }
 
   .hero .amp{
-    color:#8B5A00;
+    color:#5c0909;
     text-shadow:0 1px 4px rgba(255,255,255,.9);
   }
 
@@ -383,7 +401,7 @@
 
   footer .monogram,
   footer .script{
-    color:#4A121C;
+    color:#e2dfe0;
     text-shadow:0 1px 4px rgba(255,255,255,.9);
   }
 
@@ -617,7 +635,7 @@
     text-align:center;
     padding:60px 24px 40px;
     color:var(--ink-soft);
-    background:rgba(245,230,211,.12);
+    background:rgba(233, 232, 229, 0.12);
   }
   footer .script{ font-size:2.2rem; display:block; margin-bottom:10px; }
   footer .monogram{
@@ -648,14 +666,14 @@
     word-break:keep-all !important;
     overflow-wrap:normal !important;
     text-align:center !important;
-    font-size:clamp(0.62rem, 1.25vw, 0.95rem) !important;
+    font-size:clamp(0.78rem, 1.8vw, 1.35rem) !important;
     letter-spacing:0.08em !important;
     line-height:1.2 !important;
   }
 
   @media (max-width:520px){
     .hero .eyebrow{
-      font-size:0.58rem !important;
+      font-size:0.72rem !important;
       letter-spacing:0.045em !important;
     }
   }
@@ -700,7 +718,7 @@
   footer .monogram,
   footer .closing-text,
   footer p{
-    color:#1F1F1F !important;
+    color:#988d8d !important;
     text-shadow:none !important;
     font-weight:800 !important;
   }
@@ -733,7 +751,12 @@
   </svg>
 
   <div class="hero-inner">
-    <span class="eyebrow" id="hero-eyebrow"></span>
+    <svg class="hero-eyebrow-arc" viewBox="0 0 400 400" aria-hidden="true">
+      <defs><path id="hero-eyebrow-path" d="M 4 200 A 196 196 0 0 1 396 200"/></defs>
+      <text text-anchor="middle">
+        <textPath id="hero-eyebrow" href="#hero-eyebrow-path" startOffset="50%"></textPath>
+      </text>
+    </svg>
     <h1 class="hero-names"><span id="hero-p1"></span><span class="amp"></span><span id="hero-p2"></span></h1>
     <p class="hero-sub" id="hero-sub"></p>
     <p class="hero-date" id="hero-date"></p>
@@ -805,7 +828,7 @@
     </div>
   </div>
 
-  <div style="margin-top:44px;">
+  <div id="reception-event" style="margin-top:44px;">
     <h3 class="event-card"><span id="reception-icon"></span> <strong id="reception-heading"></strong></h3>
     <div class="map-card">
       <iframe id="reception-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title=""></iframe>
@@ -882,6 +905,7 @@
   function init(CONFIG){
 
   const couple = CONFIG.couple, hero = CONFIG.hero, ev = CONFIG.events;
+  const reception = ev.reception || ev.reception1;
   const fullNames = couple.partner1 + " " + couple.connector + " " + couple.partner2;
   const setText = (id, text) => { document.getElementById(id).textContent = text; };
 
@@ -889,6 +913,7 @@
   if(CONFIG.page.backgroundImage) document.documentElement.style.setProperty('--bg-image', 'url("' + CONFIG.page.backgroundImage + '")');
 
   setText('hero-eyebrow', hero.eyebrow);
+  document.querySelector('.hero-eyebrow-arc').setAttribute('aria-label', hero.eyebrow);
   setText('hero-p1', couple.partner1);
   setText('hero-p2', couple.partner2);
   document.querySelector('.hero-names .amp').textContent = couple.connector;
@@ -915,10 +940,11 @@
 
   setText('ceremony-icon', ev.ceremony.icon);
   setText('ceremony-heading', ev.ceremony.title + " — " + ev.ceremony.displayDate);
-  setText('reception-icon', ev.reception.icon);
-  setText('reception-heading', ev.reception.title + " — " + ev.reception.displayDate);
+  setText('reception-icon', reception.icon);
+  setText('reception-heading', reception.title + " — " + reception.displayDate);
+  document.getElementById('reception-event').hidden = reception.enabled === false;
   document.getElementById('venue-map').title = ev.ceremony.mapTitle;
-  document.getElementById('reception-map').title = ev.reception.mapTitle;
+  document.getElementById('reception-map').title = reception.mapTitle;
 
   setText('footer-script', CONFIG.footer.script);
   setText('footer-monogram', fullNames);
@@ -1032,7 +1058,7 @@
     document.getElementById('venue-address').textContent = address;
     document.getElementById('directions-btn').href = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
 
-    const r = ev.reception.venue;
+    const r = reception.venue;
     document.getElementById('reception-map').src = `https://maps.google.com/maps?q=${r.lat},${r.lng}&z=${r.zoom}&output=embed`;
     document.getElementById('reception-name').textContent = r.name;
     document.getElementById('reception-address').textContent = r.address;
