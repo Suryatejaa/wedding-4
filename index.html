@@ -679,9 +679,9 @@
   #venue h3.event-card{
     display:block !important;
     width:max-content !important;
-    max-width:92% !important;
+    max-width:100% !important;
     margin:0 auto 14px !important;
-    padding:14px 26px !important;
+    padding:14px 10px !important;
     background:#ffffff !important;
     color:#232323 !important;
     border-radius:12px !important;
@@ -782,7 +782,7 @@
     .section,.gallery-wrap{padding:48px 16px}
     .section-head{margin-bottom:28px}
     .event-card{max-width:100%;padding:14px 16px}
-    #venue h3.event-card{max-width:100% !important;padding:12px 14px !important;font-size:clamp(1.2rem,5vw,1.55rem) !important}
+    #venue h3.event-card{max-width:100% !important;padding:12px 8px !important;font-size:clamp(1.2rem,5vw,1.55rem) !important}
     .map-card iframe{height:280px}
     .btn{max-width:100%;white-space:normal;text-align:center}
     .lightbox{padding:16px}
@@ -880,7 +880,7 @@
   </div>
 
   <div style="margin-bottom:14px;">
-    <h3 class="event-card"><span id="ceremony-icon"></span> <strong id="ceremony-heading"></strong></h3>
+    <h3 class="event-card"><span id="ceremony-icon"></span> <strong><span id="ceremony-heading"></span><br><span id="ceremony-date"></span></strong></h3>
     <div class="map-card">
       <iframe id="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title=""></iframe>
       <div class="map-info">
@@ -891,7 +891,7 @@
   </div>
 
   <div id="reception-event" style="margin-top:44px;">
-    <h3 class="event-card"><span id="reception-icon"></span> <strong id="reception-heading"></strong></h3>
+    <h3 class="event-card"><span id="reception-icon"></span> <strong><span id="reception-heading"></span><br><span id="reception-date"></span></strong></h3>
     <div class="map-card">
       <iframe id="reception-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title=""></iframe>
       <div class="map-info">
@@ -1011,9 +1011,12 @@
   document.getElementById('reception-directions-btn').textContent = CONFIG.venueSection.directionsLabel;
 
   setText('ceremony-icon', ev.ceremony.icon);
-  setText('ceremony-heading', ev.ceremony.title + " — " + ev.ceremony.displayDate);
+  const keepTimeTogether = value => value.replace(/(\d{1,2}:\d{2})\s+(AM|PM)/g,'$1\u00a0$2');
+  setText('ceremony-heading', ev.ceremony.title + " —");
+  setText('ceremony-date', keepTimeTogether(ev.ceremony.displayDate));
   setText('reception-icon', reception.icon);
-  setText('reception-heading', reception.title + " — " + reception.displayDate);
+  setText('reception-heading', reception.title + " —");
+  setText('reception-date', keepTimeTogether(reception.displayDate));
   document.getElementById('reception-event').hidden = reception.enabled === false;
   document.getElementById('venue-map').title = ev.ceremony.mapTitle;
   document.getElementById('reception-map').title = reception.mapTitle;
