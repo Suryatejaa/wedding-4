@@ -163,6 +163,7 @@
     color:var(--maroon);
     opacity:0;transform:translateY(12px);transition:opacity 1.5s ease,transform 1.5s ease;
   }
+  .hero-date .date-time{display:block;white-space:nowrap}
   .hero-details.is-visible .hero-sub,.hero-details.is-visible .hero-date{opacity:1;transform:translateY(0)}
 
   .countdown{
@@ -975,7 +976,18 @@
   setText('hero-p2', couple.partner2);
   document.querySelector('.hero-names .amp').textContent = couple.connector;
   setText('hero-sub', hero.subtitle);
-  setText('hero-date', hero.displayDate);
+  const dateEl = document.getElementById('hero-date');
+  const dateParts = hero.displayDate.split(/\s*·\s*/);
+  dateEl.replaceChildren();
+  if(dateParts.length > 1){
+    const day = document.createElement('span');
+    const time = document.createElement('span');
+    day.textContent = dateParts.slice(0,-1).join(' · ');
+    time.className = 'date-time';
+    time.textContent = dateParts[dateParts.length - 1];
+    dateEl.append(day,time);
+  }else dateEl.textContent = hero.displayDate;
+  dateEl.setAttribute('aria-label',hero.displayDate);
   setText('scroll-cue', hero.scrollCue);
   setText('gallery-eyebrow', CONFIG.gallery.eyebrow);
   setText('gallery-title', CONFIG.gallery.title);
