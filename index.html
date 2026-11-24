@@ -101,10 +101,17 @@
     background:rgba(245,230,211,.12);
     overflow:hidden;
     padding:clamp(80px,8vh,100px) 20px 44px;
+    /* keep everything on the vertical centre line at every screen size */
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    min-height:100svh;
   }
   .hero-wheel{
     position:relative;
-    width:min(92vw,760px);
+    width:min(92%,760px);
     aspect-ratio:1;
     margin:0 auto;
     display:grid;
@@ -126,14 +133,14 @@
     to{transform:rotate(360deg)}
   }
   @keyframes wheel-in{to{opacity:.68}}
-  .hero-eyebrow-arc{position:absolute;inset:-9%;width:auto;height:auto;overflow:visible;pointer-events:none;z-index:2}
+  .hero-eyebrow-arc{position:absolute;left:-9%;top:-9%;width:118%;height:118%;overflow:visible;pointer-events:none;z-index:2}
   .hero-eyebrow-arc text{
     fill:var(--maroon-deep);font-family:'Oriya MN',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.8px;
     paint-order:stroke;stroke:rgba(255,250,245,.8);stroke-width:2px;stroke-linejoin:round
   }
   #hero-eyebrow-clip rect{width:0;transition:width 1.5s ease}
   .hero-wheel.is-typing #hero-eyebrow-clip rect{width:400px}
-  .hero-inner{position:relative;z-index:1;width:100%}
+  .hero-inner{position:relative;z-index:1;width:100%;margin-inline:auto}
   .hero-names{
     position:relative;z-index:1;width:100%;margin:0;padding:0 12%;
     font-size:clamp(2.3rem,8vw,5rem);font-weight:700;line-height:.92;
@@ -699,8 +706,8 @@
       min-height:100svh;
       padding:56px 16px 42px;
     }
-    .hero-inner{width:100%;max-width:460px}
-    .hero-wheel{width:min(94vw,460px)}
+    .hero-inner{width:100%;max-width:460px;margin-inline:auto}
+    .hero-wheel{width:min(100%,460px)}
     .hero .eyebrow{
       white-space:normal !important;
       max-width:100% !important;
@@ -830,9 +837,12 @@
   .vs-where span{ display:block; font-weight:500; font-size:.95rem; color:#4a3b32; white-space:pre-line; }
   .vs-btn{
     display:inline-flex; align-items:center; gap:10px; background:var(--maroon); color:#FFF4DC; text-decoration:none;
-    border-radius:999px; padding:13px 22px; font-weight:700; font-size:.95rem; white-space:nowrap;
+    border-radius:999px; padding:13px 22px; font-family:'Oriya MN',serif; font-weight:700; font-size:.95rem; white-space:nowrap;
     box-shadow:0 6px 14px rgba(107,31,42,.3); transition:background .25s ease,transform .25s ease;
   }
+  .vs-actions{ display:flex; align-items:center; justify-content:flex-end; gap:10px; flex-wrap:wrap; margin-left:auto; }
+  .vs-btn--secondary{ background:#FFF8E9; color:var(--maroon); border:1px solid #C19123; box-shadow:none; }
+  .vs-btn--secondary:hover{ background:#F8E8C6; }
   .vs-btn svg{ width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
   .vs-btn:hover{ background:var(--maroon-deep); transform:translateY(-2px); }
   @media (max-width:560px){
@@ -843,7 +853,8 @@
     .vs-card{ padding:18px 16px 16px; }
     .vs-pills{ flex-direction:column; gap:12px; }
     .vs-pill + .vs-pill{ margin:0; padding:12px 0 0; border-left:0; border-top:1.5px solid #C19123; }
-    .vs-btn{ width:100%; justify-content:center; }
+    .vs-actions{ width:100%; }
+    .vs-btn{ flex:1 1 100%; width:100%; justify-content:center; }
   }
 </style>
 </head>
@@ -859,12 +870,12 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-wheel">
-      <svg class="hero-eyebrow-arc" id="hero-eyebrow-arc" viewBox="0 0 400 400" role="img" aria-label="">
+      <svg class="hero-eyebrow-arc" id="hero-eyebrow-arc" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet" role="img" aria-label="">
         <defs>
           <path id="hero-eyebrow-path" d="M 20 200 A 180 180 0 0 1 380 200"/>
           <clipPath id="hero-eyebrow-clip" clipPathUnits="userSpaceOnUse"><rect x="0" y="0" width="0" height="400"/></clipPath>
         </defs>
-        <text text-anchor="middle" clip-path="url(#hero-eyebrow-clip)"><textPath id="hero-eyebrow" href="#hero-eyebrow-path" startOffset="50%"></textPath></text>
+        <text text-anchor="middle" clip-path="url(#hero-eyebrow-clip)"><textPath id="hero-eyebrow" href="#hero-eyebrow-path" startOffset="50%" text-anchor="middle"></textPath></text>
       </svg>
       <h1 class="hero-names"><span id="hero-p1"></span><span class="amp"></span><span id="hero-p2"></span></h1>
     </div>
@@ -1178,7 +1189,9 @@
     };
     const el = (tag, cls, text) => { const n = document.createElement(tag); if(cls) n.className = cls; if(text != null) n.textContent = text; return n; };
     const icon = (name, cls) => { const w = document.createElement('span'); w.innerHTML = '<svg class="' + (cls || 'ic-' + name) + '" viewBox="0 0 24 24" aria-hidden="true">' + (ICON[name] || ICON.calendar) + '</svg>'; return w.firstChild; };
-    const dirHref = v => v.mapsUrl || 'https://www.google.com/maps/dir/?api=1&destination=' +
+    const mapHref = v => v.mapsUrl || 'https://www.google.com/maps/search/?api=1&query=' +
+      ((typeof v.lat === 'number' && typeof v.lng === 'number') ? v.lat + ',' + v.lng : encodeURIComponent(v.mapQuery || (v.name + ' ' + v.address)));
+    const dirHref = v => 'https://www.google.com/maps/dir/?api=1&destination=' +
       ((typeof v.lat === 'number' && typeof v.lng === 'number') ? v.lat + ',' + v.lng : encodeURIComponent(v.mapQuery || (v.name + ' ' + v.address)));
     const line = (d, pill) => {
       const row = el('div', pill ? 'vs-pill' : 'vs-row'); row.appendChild(icon(d.icon));
@@ -1190,7 +1203,8 @@
     };
 
     const box = document.getElementById('venue-timeline'); box.replaceChildren();
-    const label = CONFIG.venueSection.directionsLabel;
+    const mapLabel = CONFIG.venueSection.viewOnMapsLabel || 'View on Maps';
+    const directionsLabel = CONFIG.venueSection.directionsLabel || 'Get Directions';
     [ev.ceremony, reception].filter(e => e && e.enabled !== false).forEach(e => {
       const item = el('div', 'vs-event');
       const mk = el('span', 'vs-marker'); mk.innerHTML = LOTUS; mk.setAttribute('aria-hidden', 'true'); item.appendChild(mk);
@@ -1208,9 +1222,13 @@
       const v = e.venue, ven = el('div', 'vs-venue'), where = el('div', 'vs-where');
       where.appendChild(icon('pin'));
       const wt = el('div'); wt.appendChild(el('strong', null, v.name)); wt.appendChild(el('span', null, v.address)); where.appendChild(wt);
-      const a = el('a', 'vs-btn'); a.href = dirHref(v); a.target = '_blank'; a.rel = 'noopener noreferrer';
-      a.appendChild(icon('pin')); a.appendChild(document.createTextNode(label)); a.appendChild(icon('ext'));
-      ven.append(where, a); card.appendChild(ven);
+      const actions = el('div', 'vs-actions');
+      const mapsLink = el('a', 'vs-btn vs-btn--secondary'); mapsLink.href = mapHref(v); mapsLink.target = '_blank'; mapsLink.rel = 'noopener noreferrer';
+      mapsLink.appendChild(icon('pin')); mapsLink.appendChild(document.createTextNode(mapLabel)); mapsLink.appendChild(icon('ext'));
+      const directionsLink = el('a', 'vs-btn'); directionsLink.href = dirHref(v); directionsLink.target = '_blank'; directionsLink.rel = 'noopener noreferrer';
+      directionsLink.appendChild(icon('pin')); directionsLink.appendChild(document.createTextNode(directionsLabel)); directionsLink.appendChild(icon('ext'));
+      actions.append(mapsLink, directionsLink);
+      ven.append(where, actions); card.appendChild(ven);
       item.appendChild(card); box.appendChild(item);
     });
   }

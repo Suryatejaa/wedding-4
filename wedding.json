@@ -87,17 +87,19 @@
   "venueSection": {
     "eyebrow": "Wedding details",
     "title": "Venue & schedule",
-    "directionsLabel": "📍 Get Directions"
+    "viewOnMapsLabel": "View on Maps",
+    "directionsLabel": "Get Directions"
   },
   "events": {
     "ceremony": {
       "icon": "💍",
-      "title": "Wedding Muhurtham",
+      "title": "Wedding & Dinner",
       "displayDate": "Thursday, 3 December 2026 · 9:03 PM",
       "mapTitle": "Wedding venue map",
       "venue": {
         "name": "Tulasi Convention Hall",
         "address": "Peravali / Peravaram, West Godavari district",
+        "mapsUrl": "https://maps.app.goo.gl/kaHha4ucHSVmNhDg8",
         "lat": 16.5539187,
         "lng": 81.6292195,
         "zoom": 15
@@ -112,6 +114,7 @@
       "venue": {
         "name": "Raja Rani Convention Hall",
         "address": "Jangareddy Gudem, Eluru district",
+        "mapsUrl": "https://maps.app.goo.gl/GcnGpgTZVfVNnGXU6",
         "lat": 17.133845195531027,
         "lng": 81.30477497151163,
         "zoom": 15

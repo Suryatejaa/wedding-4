@@ -675,91 +675,6 @@
   }
 
 
-  /* White background for the Wedding Ceremony and Reception headings */
-  #venue h3.event-card{
-    display:block !important;
-    width:max-content !important;
-    max-width:100% !important;
-    margin:0 auto 14px !important;
-    padding:14px 0 !important;
-    background:#ffffff !important;
-    color:#232323 !important;
-    border-radius:12px !important;
-    border:1px solid rgba(0,0,0,.08) !important;
-    box-shadow:0 6px 18px rgba(0,0,0,.16) !important;
-    text-align:center !important;
-    font-family:'Oriya MN',serif !important;
-    font-size:1.7rem !important;
-    font-weight:800 !important;
-    line-height:1.35 !important;
-  }
-
-  #venue h3.event-card strong{
-    color:#232323 !important;
-    font-family:'Oriya MN',serif !important;
-    font-size:inherit !important;
-    font-weight:800 !important;
-    text-shadow:none !important;
-  }
-
-  #venue h3.event-card #ceremony-date{
-    white-space:nowrap;
-  }
-
-  #venue h3.event-card #reception-date{
-    white-space:nowrap;
-  }
-
-  .venue-timeline{
-    position:relative;
-  }
-
-  .venue-timeline::before{
-    content:"";
-    position:absolute;
-    left:17px;
-    top:30px;
-    bottom:30px;
-    width:2px;
-    background:linear-gradient(to bottom,rgba(193,145,35,.25),#C19123 16%,#C19123 84%,rgba(193,145,35,.25));
-  }
-
-  .venue-event{
-    position:relative;
-    margin:0 0 44px 44px;
-  }
-
-  .venue-event:last-child{
-    margin-bottom:0;
-  }
-
-  .venue-timeline-marker{
-    position:absolute;
-    z-index:1;
-    top:12px;
-    left:-44px;
-    display:grid;
-    width:36px;
-    height:36px;
-    place-items:center;
-    border:2px solid #C19123;
-    border-radius:50%;
-    background:#FFF9EF;
-    color:#9B6E13;
-    box-shadow:0 2px 8px rgba(74,18,28,.14),inset 0 0 0 2px #fff;
-  }
-
-  .venue-timeline-marker svg{
-    width:23px;
-    height:23px;
-    fill:none;
-    stroke:currentColor;
-    stroke-width:1.6;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-  }
-
-
   /* Closing message readability over the background photo */
   footer .script,
   footer .monogram,
@@ -863,6 +778,77 @@
     .venue-timeline-marker{left:-36px}
   }
 
+
+  /* ============ VENUE & SCHEDULE (timeline cards) ============ */
+  #venue .section-head .eyebrow{ color:#9B6E13; font-weight:700; letter-spacing:.32em; text-shadow:none; }
+  #venue .section-head h2{
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:700;
+    font-size:clamp(2.5rem,8vw,3.6rem); line-height:1.1; color:var(--maroon); text-shadow:none; margin-top:10px;
+  }
+  .vs-divider{ display:block; width:min(300px,70%); margin:-26px auto 34px; fill:none; stroke:#C19123; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+  .vs-timeline{ position:relative; }
+  .vs-timeline::before{
+    content:""; position:absolute; left:20px; top:30px; bottom:30px; width:3px; border-radius:2px;
+    background:linear-gradient(#C19123,#E6C777 50%,#C19123);
+  }
+  .vs-event{ position:relative; margin:0 0 30px 64px; }
+  .vs-event:last-child{ margin-bottom:0; }
+  .vs-marker{
+    position:absolute; left:-64px; top:26px; width:44px; height:44px; border-radius:50%;
+    display:grid; place-items:center; background:radial-gradient(circle at 35% 30%,#C46A38,#8A3B1C);
+    border:3px solid #E7C677; box-shadow:0 0 0 4px #FFF4DC,0 5px 12px rgba(74,18,28,.28);
+  }
+  .vs-marker svg{ width:26px; height:26px; fill:none; stroke:#FFE9B8; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  .vs-card{
+    position:relative; overflow:hidden; border-radius:22px; padding:24px 24px 20px;
+    background:linear-gradient(160deg,#FFFCF4,#FBEFD8); border:1.5px solid #E4C98E;
+    box-shadow:0 12px 30px rgba(122,74,20,.15); color:#2D1A12;
+    font-family:'Oriya MN',system-ui,sans-serif;
+  }
+  .vs-top{ display:flex; gap:14px; align-items:flex-start; justify-content:space-between; }
+  .vs-info{ flex:1; min-width:0; }
+  .vs-art{ flex:none; width:clamp(92px,36%,230px); }
+  .vs-art svg{ display:block; width:100%; height:auto; }
+  #venue .vs-title{
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:700;
+    font-size:clamp(1.55rem,5.4vw,2.2rem); line-height:1.12; color:var(--maroon); margin:0 0 14px; text-shadow:none;
+  }
+  #venue .vs-title::after{ content:""; display:block; width:min(190px,80%); height:2px; margin-top:12px; background:linear-gradient(90deg,#C19123,rgba(193,145,35,0)); }
+  .vs-row{ display:flex; gap:12px; align-items:flex-start; margin:12px 0; font-weight:700; font-size:1.02rem; line-height:1.35; }
+  .vs-row svg,.vs-pill svg{ flex:none; width:26px; height:26px; fill:none; stroke:var(--maroon); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; margin-top:-1px; }
+  .vs-row svg.ic-dinner,.vs-pill svg.ic-dinner,.vs-pill svg.ic-guests,.vs-row svg.ic-guests{ stroke:#B8861B; }
+  .vs-lbl{ color:var(--maroon); }
+  .vs-row small{ display:block; font-weight:500; font-size:.88rem; color:var(--ink-soft); }
+  .vs-pills{ display:flex; gap:0; margin:14px 0 2px; padding:12px 14px; border-radius:14px; background:#F8E8C6; }
+  .vs-pill{ flex:1; min-width:0; display:flex; gap:10px; align-items:center; font-weight:700; line-height:1.3; }
+  .vs-pill + .vs-pill{ margin-left:14px; padding-left:14px; border-left:1.5px solid #C19123; }
+  .vs-pill .vs-lbl{ display:block; }
+  .vs-venue{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-top:16px; padding-top:16px; border-top:1px solid rgba(193,145,35,.4); }
+  .vs-where{ display:flex; gap:10px; align-items:flex-start; min-width:0; }
+  .vs-where svg{ flex:none; width:26px; height:26px; fill:none; stroke:#B8861B; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+  .vs-where strong{ display:block; color:var(--maroon); font-size:1.22rem; font-weight:800; line-height:1.25; }
+  .vs-where span{ display:block; font-weight:500; font-size:.95rem; color:#4a3b32; white-space:pre-line; }
+  .vs-btn{
+    display:inline-flex; align-items:center; gap:10px; background:var(--maroon); color:#FFF4DC; text-decoration:none;
+    border-radius:999px; padding:13px 22px; font-family:'Oriya MN',serif; font-weight:700; font-size:.95rem; white-space:nowrap;
+    box-shadow:0 6px 14px rgba(107,31,42,.3); transition:background .25s ease,transform .25s ease;
+  }
+  .vs-actions{ display:flex; align-items:center; justify-content:flex-end; gap:10px; flex-wrap:wrap; margin-left:auto; }
+  .vs-btn--secondary{ background:#FFF8E9; color:var(--maroon); border:1px solid #C19123; box-shadow:none; }
+  .vs-btn--secondary:hover{ background:#F8E8C6; }
+  .vs-btn svg{ width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .vs-btn:hover{ background:var(--maroon-deep); transform:translateY(-2px); }
+  @media (max-width:560px){
+    .vs-timeline::before{ left:14px; }
+    .vs-event{ margin-left:50px; }
+    .vs-marker{ left:-52px; width:34px; height:34px; top:20px; box-shadow:0 0 0 3px #FFF4DC; }
+    .vs-marker svg{ width:20px; height:20px; }
+    .vs-card{ padding:18px 16px 16px; }
+    .vs-pills{ flex-direction:column; gap:12px; }
+    .vs-pill + .vs-pill{ margin:0; padding:12px 0 0; border-left:0; border-top:1.5px solid #C19123; }
+    .vs-actions{ width:100%; }
+    .vs-btn{ flex:1 1 100%; width:100%; justify-content:center; }
+  }
 </style>
 </head>
 <body>
@@ -947,31 +933,9 @@
     <h2 id="venue-title"></h2>
   </div>
 
-  <div class="venue-timeline">
-  <div class="venue-event">
-    <span class="venue-timeline-marker" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 25c-5.8 0-10.1-2.7-12.2-7.2 5.2-.7 9.3 1 12.2 5.2 2.9-4.2 7-5.9 12.2-5.2C26.1 22.3 21.8 25 16 25Z"/><path d="M16 22.7C9.8 17.5 10.2 11 16 5c5.8 6 6.2 12.5 0 17.7Z"/><path d="M5.8 14.1c3.7.2 6.4 2.1 8.1 5.7M26.2 14.1c-3.7.2-6.4 2.1-8.1 5.7M10 27.5h12"/></svg></span>
-    <h3 class="event-card"><span id="ceremony-icon"></span> <strong id="ceremony-heading"></strong><br><span id="ceremony-date"></span></h3>
-    <div class="map-card">
-      <iframe id="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title=""></iframe>
-      <div class="map-info">
-        <div class="addr"><b id="venue-name"></b><span id="venue-address"></span></div>
-        <a class="btn" id="directions-btn" href="#" target="_blank" rel="noopener"></a>
-      </div>
-    </div>
-  </div>
+  <svg class="vs-divider" viewBox="0 0 240 24" aria-hidden="true"><path d="M4 12h92M144 12h92" /><g transform="translate(104 -2) scale(.9)"><path d="M16 25c-5.8 0-10.1-2.7-12.2-7.2 5.2-.7 9.3 1 12.2 5.2 2.9-4.2 7-5.9 12.2-5.2C26.1 22.3 21.8 25 16 25Z"/><path d="M16 22.7C9.8 17.5 10.2 11 16 5c5.8 6 6.2 12.5 0 17.7Z"/></g></svg>
 
-  <div id="reception-event" class="venue-event">
-    <span class="venue-timeline-marker" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 25c-5.8 0-10.1-2.7-12.2-7.2 5.2-.7 9.3 1 12.2 5.2 2.9-4.2 7-5.9 12.2-5.2C26.1 22.3 21.8 25 16 25Z"/><path d="M16 22.7C9.8 17.5 10.2 11 16 5c5.8 6 6.2 12.5 0 17.7Z"/><path d="M5.8 14.1c3.7.2 6.4 2.1 8.1 5.7M26.2 14.1c-3.7.2-6.4 2.1-8.1 5.7M10 27.5h12"/></svg></span>
-    <h3 class="event-card"><span id="reception-icon"></span> <strong id="reception-heading"></strong><br><span id="reception-date"></span></h3>
-    <div class="map-card">
-      <iframe id="reception-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title=""></iframe>
-      <div class="map-info">
-        <div class="addr"><b id="reception-name"></b><span id="reception-address"></span></div>
-        <a class="btn" id="reception-directions-btn" href="#" target="_blank" rel="noopener"></a>
-      </div>
-    </div>
-  </div>
-  </div>
+  <div class="vs-timeline" id="venue-timeline"></div>
 </section>
 
 <footer>
@@ -1079,18 +1043,7 @@
 
   setText('venue-eyebrow', CONFIG.venueSection.eyebrow);
   setText('venue-title', CONFIG.venueSection.title);
-  document.getElementById('directions-btn').textContent = CONFIG.venueSection.directionsLabel;
-  document.getElementById('reception-directions-btn').textContent = CONFIG.venueSection.directionsLabel;
-
-  setText('ceremony-icon', ev.ceremony.icon);
-  setText('ceremony-heading', ev.ceremony.title);
-  setText('ceremony-date', ev.ceremony.displayDate);
-  setText('reception-icon', reception.icon);
-  setText('reception-heading', reception.title);
-  setText('reception-date', reception.displayDate);
-  document.getElementById('reception-event').hidden = reception.enabled === false;
-  document.getElementById('venue-map').title = ev.ceremony.mapTitle;
-  document.getElementById('reception-map').title = reception.mapTitle;
+  renderVenue();
 
   setText('footer-script', CONFIG.footer.script);
   setText('footer-monogram', fullNames);
@@ -1212,20 +1165,66 @@
     if(e.key === 'ArrowRight') document.getElementById('lb-next').click();
   });
 
-  /* ---------- map setup (no API key — public embed) ---------- */
-  (function setupMap(){
-    const { lat, lng, zoom, name, address } = ev.ceremony.venue;
-    document.getElementById('venue-map').src = `https://maps.google.com/maps?q=${lat},${lng}&z=${zoom}&output=embed`;
-    document.getElementById('venue-name').textContent = name;
-    document.getElementById('venue-address').textContent = address;
-    document.getElementById('directions-btn').href = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+  /* ---------- venue & schedule cards (from events.* in wedding.json) ---------- */
+  function renderVenue(){
+    const ICON = {
+      calendar:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h2M12 14h2M16 14h.01"/>',
+      clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/>',
+      dinner:'<path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.5 1-4 4-4 8h4"/>',
+      guests:'<circle cx="12" cy="8" r="2.6"/><circle cx="5.5" cy="10" r="2"/><circle cx="18.5" cy="10" r="2"/><path d="M7.5 19c0-3 2-5 4.5-5s4.5 2 4.5 5M2.5 18c0-2.3 1.4-3.8 3-4M21.5 18c0-2.3-1.4-3.8-3-4"/>',
+      pin:'<path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/>',
+      ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>'
+    };
+    const LOTUS = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 25c-5.8 0-10.1-2.7-12.2-7.2 5.2-.7 9.3 1 12.2 5.2 2.9-4.2 7-5.9 12.2-5.2C26.1 22.3 21.8 25 16 25Z"/><path d="M16 22.7C9.8 17.5 10.2 11 16 5c5.8 6 6.2 12.5 0 17.7Z"/><path d="M5.8 14.1c3.7.2 6.4 2.1 8.1 5.7M26.2 14.1c-3.7.2-6.4 2.1-8.1 5.7M10 27.5h12"/></svg>';
+    const ART = {
+      mandap:'<svg viewBox="0 0 200 170" aria-hidden="true"><defs><linearGradient id="pg" x1="0" x2="1"><stop offset="0" stop-color="#B8861B"/><stop offset=".5" stop-color="#F3D27A"/><stop offset="1" stop-color="#B8861B"/></linearGradient></defs><path d="M28 64Q100 -14 172 64Z" fill="#FBEFD0" stroke="#C19123" stroke-width="2"/><path d="M100 6v-6M96 8h8" stroke="#C19123" stroke-width="3" stroke-linecap="round"/><rect x="22" y="62" width="156" height="11" rx="5" fill="#E2B84F"/><g>'+[0,1,2,3,4,5,6,7,8,9].map(i=>'<circle cx="'+(30+i*15.5)+'" cy="68" r="5" fill="'+['#D6303B','#F28C28','#F6D36B','#7BA23F'][i%4]+'"/>').join('')+'</g><rect x="34" y="73" width="9" height="70" fill="url(#pg)"/><rect x="73" y="73" width="9" height="70" fill="url(#pg)"/><rect x="118" y="73" width="9" height="70" fill="url(#pg)"/><rect x="157" y="73" width="9" height="70" fill="url(#pg)"/><rect x="20" y="141" width="160" height="12" rx="6" fill="#F3E3C0" stroke="#C9A15A"/><rect x="78" y="112" width="44" height="26" rx="8" fill="#FBF3E2" stroke="#C9A15A" stroke-width="1.5"/><circle cx="30" cy="140" r="7" fill="#D6303B"/><circle cx="172" cy="140" r="7" fill="#F28C28"/></svg>',
+      stage:'<svg viewBox="0 0 200 170" aria-hidden="true"><rect x="28" y="40" width="144" height="104" rx="6" fill="#FCEBC0" opacity=".75"/><path d="M22 148V70Q22 18 100 18T178 70V148" fill="none" stroke="#F0B94F" stroke-width="15" stroke-linecap="round"/><path d="M22 148V70Q22 18 100 18T178 70V148" fill="none" stroke="#D6303B" stroke-width="15" stroke-linecap="round" stroke-dasharray="0 22"/><path d="M22 148V70Q22 18 100 18T178 70V148" fill="none" stroke="#7BA23F" stroke-width="6" stroke-linecap="round" stroke-dasharray="0 11"/><rect x="62" y="108" width="76" height="30" rx="10" fill="#FBF3E2" stroke="#C9A15A" stroke-width="1.5"/><rect x="26" y="146" width="148" height="9" rx="4" fill="#F3E3C0" stroke="#C9A15A"/><circle cx="40" cy="138" r="8" fill="#F6D36B"/><circle cx="160" cy="138" r="8" fill="#F28C28"/></svg>'
+    };
+    const el = (tag, cls, text) => { const n = document.createElement(tag); if(cls) n.className = cls; if(text != null) n.textContent = text; return n; };
+    const icon = (name, cls) => { const w = document.createElement('span'); w.innerHTML = '<svg class="' + (cls || 'ic-' + name) + '" viewBox="0 0 24 24" aria-hidden="true">' + (ICON[name] || ICON.calendar) + '</svg>'; return w.firstChild; };
+    const mapHref = v => v.mapsUrl || 'https://www.google.com/maps/search/?api=1&query=' +
+      ((typeof v.lat === 'number' && typeof v.lng === 'number') ? v.lat + ',' + v.lng : encodeURIComponent(v.mapQuery || (v.name + ' ' + v.address)));
+    const dirHref = v => 'https://www.google.com/maps/dir/?api=1&destination=' +
+      ((typeof v.lat === 'number' && typeof v.lng === 'number') ? v.lat + ',' + v.lng : encodeURIComponent(v.mapQuery || (v.name + ' ' + v.address)));
+    const line = (d, pill) => {
+      const row = el('div', pill ? 'vs-pill' : 'vs-row'); row.appendChild(icon(d.icon));
+      const txt = el('div'); const lb = el('span', 'vs-lbl', d.label || '');
+      txt.appendChild(lb);
+      if(d.value){ if(pill) txt.appendChild(document.createTextNode(d.value)); else txt.appendChild(document.createTextNode(' ' + d.value)); }
+      if(d.note) txt.appendChild(el('small', null, d.note));
+      row.appendChild(txt); return row;
+    };
 
-    const r = reception.venue;
-    document.getElementById('reception-map').src = `https://maps.google.com/maps?q=${r.lat},${r.lng}&z=${r.zoom}&output=embed`;
-    document.getElementById('reception-name').textContent = r.name;
-    document.getElementById('reception-address').textContent = r.address;
-    document.getElementById('reception-directions-btn').href = `https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}`;
-  })();
+    const box = document.getElementById('venue-timeline'); box.replaceChildren();
+    const mapLabel = CONFIG.venueSection.viewOnMapsLabel || 'View on Maps';
+    const directionsLabel = CONFIG.venueSection.directionsLabel || 'Get Directions';
+    [ev.ceremony, reception].filter(e => e && e.enabled !== false).forEach(e => {
+      const item = el('div', 'vs-event');
+      const mk = el('span', 'vs-marker'); mk.innerHTML = LOTUS; mk.setAttribute('aria-hidden', 'true'); item.appendChild(mk);
+      const card = el('article', 'vs-card'), top = el('div', 'vs-top'), info = el('div', 'vs-info');
+      info.appendChild(el('h3', 'vs-title', e.title));
+      info.appendChild(line({ icon:'calendar', label:'', value:(e.date || e.displayDate || '').trim() }));
+      const det = e.details || [];
+      if(e.layout === 'pills'){ /* handled below, full width */ }
+      else det.forEach(d => info.appendChild(line(d)));
+      top.appendChild(info);
+      if(ART[e.art]){ const art = el('div', 'vs-art'); art.innerHTML = ART[e.art]; top.appendChild(art); }
+      card.appendChild(top);
+      if(e.layout === 'pills'){ const pills = el('div', 'vs-pills'); det.forEach(d => pills.appendChild(line(d, true))); card.appendChild(pills); }
+
+      const v = e.venue, ven = el('div', 'vs-venue'), where = el('div', 'vs-where');
+      where.appendChild(icon('pin'));
+      const wt = el('div'); wt.appendChild(el('strong', null, v.name)); wt.appendChild(el('span', null, v.address)); where.appendChild(wt);
+      const actions = el('div', 'vs-actions');
+      const mapsLink = el('a', 'vs-btn vs-btn--secondary'); mapsLink.href = mapHref(v); mapsLink.target = '_blank'; mapsLink.rel = 'noopener noreferrer';
+      mapsLink.appendChild(icon('pin')); mapsLink.appendChild(document.createTextNode(mapLabel)); mapsLink.appendChild(icon('ext'));
+      const directionsLink = el('a', 'vs-btn'); directionsLink.href = dirHref(v); directionsLink.target = '_blank'; directionsLink.rel = 'noopener noreferrer';
+      directionsLink.appendChild(icon('pin')); directionsLink.appendChild(document.createTextNode(directionsLabel)); directionsLink.appendChild(icon('ext'));
+      actions.append(mapsLink, directionsLink);
+      ven.append(where, actions); card.appendChild(ven);
+      item.appendChild(card); box.appendChild(item);
+    });
+  }
 
   /* Stagger content as each section enters view. */
   (function setupEntranceAnimations(){
