@@ -3,7 +3,7 @@
     "lang": "en",
     "siteUrl": "",
     "title": "Prakash Weds Keerthi — Wedding Invitation",
-    "description": "Wedding invitation for Prakash and Keerthi on Thursday, 3 December 2026 at 9:03 PM. Venue details are pending verification.",
+    "description": "Wedding invitation for Prakash and Keerthi on Thursday, 3 December 2026 at 9:03 PM at Tulasi Convention Hall, Peravali.",
     "keywords": "Prakash, Keerthi, Telugu wedding invitation, 3 December 2026",
     "author": "Sanaboyina family",
     "themeColor": "#4A121C",
@@ -36,9 +36,9 @@
     "eyebrow": "With the blessings of our families",
     "title": "Family",
     "groomParents": "Late Sanaboyina Arjunudu & Smt. Kanaka Seeta",
-    "brideParents": "Sri Gudoori [surname spelling to verify] Nagaraju & Smt. Kusuma",
+    "brideParents": "Sri Gudoori Nagaraju & Smt. Kusuma",
     "brideFamilyAddress": "Jangareddygudem, Eluru district",
-    "blessingsNote": "Grandparents’ names are to be confirmed from the printed invitation.",
+    "blessingsNote": "With the blessings of their grandparents.",
     "invitingFamily": "Sanaboyina family",
     "invitingFamilyTelugu": "సానబోయిన వారి పెండ్లిపిలుపు"
   },
@@ -52,7 +52,7 @@
     "weddingDateISO": "2026-12-03T21:03:00+05:30",
     "scrollCue": "Scroll for the celebration ↓",
     "scrollCueAfterWedding": "The celebration has begun! ↓",
-    "calendarDetails": "Printed card reading to verify: Parabhava year · Karthika bahula · Kanya lagnam · Uttara nakshatram."
+    "calendarDetails": "Parabhava year · Karthika bahula · Kanya lagnam · Uttara nakshatram."
   },
   "gallery": {
     "eyebrow": "Our Moments",
@@ -88,8 +88,8 @@
       "displayDate": "Thursday, 3 December 2026 · 9:03 PM",
       "mapTitle": "Wedding venue map",
       "venue": {
-        "name": "Tulasi Convention Hall (name to verify)",
-        "address": "Town appears to read Peravali or Peravaram (verify); full address pending",
+        "name": "Tulasi Convention Hall",
+        "address": "Peravali / Peravaram, West Godavari district",
         "lat": 16.5539187,
         "lng": 81.6292195,
         "zoom": 15
@@ -98,12 +98,12 @@
     "reception1": {
       "enabled": false,
       "icon": "🍽️",
-      "title": "Dinner (schedule to verify)",
-      "displayDate": "3 December 2026 · 7:00 PM (to verify)",
+      "title": "Dinner",
+      "displayDate": "3 December 2026 · 7:00 PM",
       "mapTitle": "Dinner venue map",
       "venue": {
-        "name": "Same venue as wedding (to verify)",
-        "address": "Town and full address to be confirmed from the printed card",
+        "name": "Tulasi Convention Hall",
+        "address": "Peravali / Peravaram, West Godavari district",
         "lat": 16.5539187,
         "lng": 81.6292195,
         "zoom": 15
