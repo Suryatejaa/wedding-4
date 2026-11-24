@@ -679,9 +679,9 @@
   #venue h3.event-card{
     display:block !important;
     width:max-content !important;
-    max-width:92% !important;
+    max-width:100% !important;
     margin:0 auto 14px !important;
-    padding:14px 26px !important;
+    padding:14px 0 !important;
     background:#ffffff !important;
     color:#232323 !important;
     border-radius:12px !important;
@@ -704,6 +704,59 @@
 
   #venue h3.event-card #ceremony-date{
     white-space:nowrap;
+  }
+
+  #venue h3.event-card #reception-date{
+    white-space:nowrap;
+  }
+
+  .venue-timeline{
+    position:relative;
+  }
+
+  .venue-timeline::before{
+    content:"";
+    position:absolute;
+    left:17px;
+    top:30px;
+    bottom:30px;
+    width:2px;
+    background:linear-gradient(to bottom,rgba(193,145,35,.25),#C19123 16%,#C19123 84%,rgba(193,145,35,.25));
+  }
+
+  .venue-event{
+    position:relative;
+    margin:0 0 44px 44px;
+  }
+
+  .venue-event:last-child{
+    margin-bottom:0;
+  }
+
+  .venue-timeline-marker{
+    position:absolute;
+    z-index:1;
+    top:12px;
+    left:-44px;
+    display:grid;
+    width:36px;
+    height:36px;
+    place-items:center;
+    border:2px solid #C19123;
+    border-radius:50%;
+    background:#FFF9EF;
+    color:#9B6E13;
+    box-shadow:0 2px 8px rgba(74,18,28,.14),inset 0 0 0 2px #fff;
+  }
+
+  .venue-timeline-marker svg{
+    width:23px;
+    height:23px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.6;
+    stroke-linecap:round;
+    stroke-linejoin:round;
   }
 
 
@@ -805,6 +858,11 @@
     .gallery-wrap{padding-inline:12px}
   }
 
+  @media (max-width:600px){
+    .venue-event{margin-left:36px}
+    .venue-timeline-marker{left:-36px}
+  }
+
 </style>
 </head>
 <body>
@@ -889,7 +947,9 @@
     <h2 id="venue-title"></h2>
   </div>
 
-  <div style="margin-bottom:14px;">
+  <div class="venue-timeline">
+  <div class="venue-event">
+    <span class="venue-timeline-marker" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 25c-5.8 0-10.1-2.7-12.2-7.2 5.2-.7 9.3 1 12.2 5.2 2.9-4.2 7-5.9 12.2-5.2C26.1 22.3 21.8 25 16 25Z"/><path d="M16 22.7C9.8 17.5 10.2 11 16 5c5.8 6 6.2 12.5 0 17.7Z"/><path d="M5.8 14.1c3.7.2 6.4 2.1 8.1 5.7M26.2 14.1c-3.7.2-6.4 2.1-8.1 5.7M10 27.5h12"/></svg></span>
     <h3 class="event-card"><span id="ceremony-icon"></span> <strong id="ceremony-heading"></strong><br><span id="ceremony-date"></span></h3>
     <div class="map-card">
       <iframe id="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title=""></iframe>
@@ -900,8 +960,9 @@
     </div>
   </div>
 
-  <div id="reception-event" style="margin-top:44px;">
-    <h3 class="event-card"><span id="reception-icon"></span> <strong id="reception-heading"></strong></h3>
+  <div id="reception-event" class="venue-event">
+    <span class="venue-timeline-marker" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 25c-5.8 0-10.1-2.7-12.2-7.2 5.2-.7 9.3 1 12.2 5.2 2.9-4.2 7-5.9 12.2-5.2C26.1 22.3 21.8 25 16 25Z"/><path d="M16 22.7C9.8 17.5 10.2 11 16 5c5.8 6 6.2 12.5 0 17.7Z"/><path d="M5.8 14.1c3.7.2 6.4 2.1 8.1 5.7M26.2 14.1c-3.7.2-6.4 2.1-8.1 5.7M10 27.5h12"/></svg></span>
+    <h3 class="event-card"><span id="reception-icon"></span> <strong id="reception-heading"></strong><br><span id="reception-date"></span></h3>
     <div class="map-card">
       <iframe id="reception-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title=""></iframe>
       <div class="map-info">
@@ -909,6 +970,7 @@
         <a class="btn" id="reception-directions-btn" href="#" target="_blank" rel="noopener"></a>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -1024,7 +1086,8 @@
   setText('ceremony-heading', ev.ceremony.title);
   setText('ceremony-date', ev.ceremony.displayDate);
   setText('reception-icon', reception.icon);
-  setText('reception-heading', reception.title + " — " + reception.displayDate);
+  setText('reception-heading', reception.title);
+  setText('reception-date', reception.displayDate);
   document.getElementById('reception-event').hidden = reception.enabled === false;
   document.getElementById('venue-map').title = ev.ceremony.mapTitle;
   document.getElementById('reception-map').title = reception.mapTitle;
