@@ -702,6 +702,10 @@
     text-shadow:none !important;
   }
 
+  #venue h3.event-card #ceremony-date{
+    white-space:nowrap;
+  }
+
 
   /* Closing message readability over the background photo */
   footer .script,
@@ -782,13 +786,19 @@
     .section,.gallery-wrap{padding:48px 16px}
     .section-head{margin-bottom:28px}
     .event-card{max-width:100%;padding:14px 16px}
-    #venue h3.event-card{max-width:100% !important;padding:12px 14px !important;font-size:clamp(1.2rem,5vw,1.55rem) !important}
+    #venue h3.event-card{width:100% !important;max-width:100% !important;box-sizing:border-box !important;padding:12px 0 !important;font-size:clamp(1.2rem,5vw,1.55rem) !important}
     .map-card iframe{height:280px}
     .btn{max-width:100%;white-space:normal;text-align:center}
     .lightbox{padding:16px}
   }
 
-  @media (max-width:360px){
+  @media (max-width:370px){
+    #venue h3.event-card{
+      width:calc(100% + 32px) !important;
+      max-width:calc(100vw - 8px) !important;
+      margin-left:-16px !important;
+      margin-right:-16px !important;
+    }
     .hero{padding-inline:12px}
     .hero-names{font-size:2.15rem}
     .hero-date{font-size:1.65rem !important}
@@ -880,7 +890,7 @@
   </div>
 
   <div style="margin-bottom:14px;">
-    <h3 class="event-card"><span id="ceremony-icon"></span> <strong id="ceremony-heading"></strong></h3>
+    <h3 class="event-card"><span id="ceremony-icon"></span> <strong id="ceremony-heading"></strong><br><span id="ceremony-date"></span></h3>
     <div class="map-card">
       <iframe id="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title=""></iframe>
       <div class="map-info">
@@ -1011,7 +1021,8 @@
   document.getElementById('reception-directions-btn').textContent = CONFIG.venueSection.directionsLabel;
 
   setText('ceremony-icon', ev.ceremony.icon);
-  setText('ceremony-heading', ev.ceremony.title + " — " + ev.ceremony.displayDate);
+  setText('ceremony-heading', ev.ceremony.title);
+  setText('ceremony-date', ev.ceremony.displayDate);
   setText('reception-icon', reception.icon);
   setText('reception-heading', reception.title + " — " + reception.displayDate);
   document.getElementById('reception-event').hidden = reception.enabled === false;
