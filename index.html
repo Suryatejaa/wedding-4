@@ -496,12 +496,15 @@
     position:relative;
   }
 
-  .video-preview a{
+  .video-preview button{
     display:block;
     width:100%;
     height:100%;
     position:relative;
-    text-decoration:none;
+    padding:0;
+    border:0;
+    cursor:pointer;
+    background:#111;
   }
 
   .video-preview img{
@@ -527,6 +530,14 @@
     font-size:30px;
     padding-left:4px;
     box-shadow:0 6px 20px rgba(0,0,0,.35);
+    pointer-events:none;
+  }
+
+  .video-preview iframe{
+    width:100%;
+    height:100%;
+    display:block;
+    border:0;
   }
 
 /* ============ MAP ============ */
@@ -910,12 +921,10 @@
     <h3 class="teaser-heading" id="video-heading"></h3>
 
     <div class="video-preview">
-      <a id="video-link" href="#"
-         target="_blank"
-         rel="noopener noreferrer">
+      <button id="video-link" type="button">
         <img id="video-thumb" src="" alt="">
         <span class="video-play">▶</span>
-      </a>
+      </button>
     </div>
   </div>
 
@@ -1042,11 +1051,21 @@
   const v = CONFIG.video;
   setText('video-heading', v.heading);
   const vLink = document.getElementById('video-link');
-  vLink.href = v.url;
-  vLink.setAttribute('aria-label', v.ariaLabel);
+  vLink.setAttribute('aria-label', v.ariaLabel || v.heading || 'Play wedding video');
+  const videoId = v.youtubeId || (v.url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/) || [])[1];
   const vThumb = document.getElementById('video-thumb');
-  vThumb.src = 'https://img.youtube.com/vi/' + v.youtubeId + '/hqdefault.jpg';
+  vThumb.src = 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg';
   vThumb.alt = v.thumbnailAlt;
+  vLink.addEventListener('click', () => {
+    if(!videoId) return;
+    const player = document.createElement('iframe');
+    player.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0';
+    player.title = v.heading || v.ariaLabel || 'Wedding video';
+    player.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    player.allowFullscreen = true;
+    player.referrerPolicy = 'strict-origin-when-cross-origin';
+    document.querySelector('.video-preview').replaceChildren(player);
+  }, { once:true });
 
   setText('venue-eyebrow', CONFIG.venueSection.eyebrow);
   setText('venue-title', CONFIG.venueSection.title);
